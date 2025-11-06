@@ -1,0 +1,26 @@
+name: Python CI - Testes Unitários
+
+on:
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 1. Checkout do Código
+      uses: actions/checkout@v4
+
+    - name: 2. Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11' 
+
+    - name: 3. Instalar Dependências (Pytest)
+      # Instala o pytest que usaremos para rodar o test_calculadora.py
+      run: pip install pytest
+
+    - name: 4. Executar Testes Unitários
+      # O pytest procurará automaticamente por arquivos que começam com 'test_' 
+      # e rodará os testes definidos.
+      run: pytest

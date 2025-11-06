@@ -1,0 +1,26 @@
+name: Python CI - Lint Check
+
+on:
+  # Dispara em qualquer PR aberto para main ou master
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest # O sistema operacional (máquina virtual)
+    steps:
+    - name: 1. Fazer Checkout do Código
+      uses: actions/checkout@v4
+
+    - name: 2. Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11' # Use a versão Python que você está usando localmente
+
+    - name: 3. Instalar Flake8 (Linter)
+      # Instala a ferramenta de checagem de estilo
+      run: pip install flake8
+
+    - name: 4. Executar Lint em Todos os Arquivos .py
+      # Roda o Flake8 no diretório raiz (.). Se houver erro de estilo, a Ação falha.
+      run: flake8 .

@@ -1,6 +1,6 @@
 import unittest
 # Importa as funções do seu arquivo principal
-from calculadora import somar, subtrair, multiplicar, dividir 
+from main import somar, subtrair, multiplicar, dividir 
 
 class TestCalculadora(unittest.TestCase):
     

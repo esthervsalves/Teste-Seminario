@@ -1,0 +1,25 @@
+name: CI - Validação de Código com Pylint
+
+on:
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  pylint_check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 1. Checkout do Código
+      uses: actions/checkout@v4
+
+    - name: 2. Configurar Ambiente Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    # Passo 3 e 4 combinados pela Ação Pronta
+    - name: 3. Executar Pylint
+      uses: pylint-action/pylint-action@v1 # Um exemplo popular de Action para Pylint
+      with:
+        # O Pylint rodará automaticamente nos arquivos .py encontrados
+        # Você pode configurar o caminho, se necessário, mas '.' é o padrão.
+        args: "--fail-under=8.0" # Exemplo: Falhar se a pontuação for menor que 8.0/10

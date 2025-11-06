@@ -18,7 +18,6 @@ def executar_operacoes():
     print(f"Soma: 10 + 5 = {somar(10, 5)}")
     print(f"Subtração: 10 - 5 = {subtrair(10, 5)}")
     print(f"Multiplicação: 10 * 5 = {multiplicar(10, 5)}")
-    print(f"Divisão: 10 / 5 = {dividir(10, 5)}")
 
 if __name__ == "__main__":
     executar_operacoes()

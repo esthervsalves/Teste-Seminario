@@ -14,12 +14,12 @@ jobs:
     - name: 2. Configurar Ambiente Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: '3.11' # Sua versão preferida
 
-    # Passo 3 e 4 combinados pela Ação Pronta
-    - name: 3. Executar Pylint
-      uses: pylint-action/pylint-action@v1 # Um exemplo popular de Action para Pylint
-      with:
-        # O Pylint rodará automaticamente nos arquivos .py encontrados
-        # Você pode configurar o caminho, se necessário, mas '.' é o padrão.
-        args: "--fail-under=8.0" # Exemplo: Falhar se a pontuação for menor que 8.0/10
+    - name: 3. Instalar Pylint
+      # INSTALAMOS O Pylint no ambiente do Runner
+      run: pip install pylint
+
+    - name: 4. Executar Pylint
+      # RODAMOS o comando Pylint diretamente nos arquivos Python do projeto.
+      run: pylint calculadora.py
